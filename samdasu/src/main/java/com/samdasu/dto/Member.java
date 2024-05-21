@@ -8,6 +8,7 @@ public class Member {
 	private String email;
 	private String address;
 	private String resdate;
+	public Member() {}
 	public Member(int num, String id, String pw, String name, String email, String address, String resdate) {
 		super();
 		this.num = num;
