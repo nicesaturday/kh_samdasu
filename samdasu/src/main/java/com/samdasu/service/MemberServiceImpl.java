@@ -27,8 +27,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void insMeber(Member member) {
-		memberDAO.insMeber(member);
+	public void insMember(Member member) {
+		memberDAO.insMember(member);
 	}
 
 	@Override

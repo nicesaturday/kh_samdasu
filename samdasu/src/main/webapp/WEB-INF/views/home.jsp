@@ -7,7 +7,7 @@
 <%@ include file="/head.jsp" %>
 	<title>Home</title>
 <style>
-  .section {
+  #section01 {
     width: 100%;
     height: 100%;
     background-color: #F1F1F1;
@@ -28,33 +28,43 @@
     right: 42%;
     z-index: 3;
   }
-   .section .box.box1 p:nth-child(1) {
-    color: #0066FF;
+   #section01 .box.box1 p:nth-child(2) {
     letter-spacing: 2px;
     font-size: 50px;
     
   }
-  .section .box.box1 p:nth-child(2) {
+  #section01 .box.box1 p:nth-child(3) {
     letter-spacing: 2px;
-    color: #A1A1A1;
     font-size: 35px;
   }
   .section .box.box1 p:nth-child(6) {
-    color: #0066FF;
     letter-spacing: 40px;
     font-weight: 1000;
     font-size: 200px;
   }
   .section .box.box1 p:nth-child(7) {
-    color: #0066FF;
     letter-spacing: 40px;
     font-weight: 1000;
     font-size: 200px;
   }
   #samdasoo img {
-      width: 220px;
-      height: 500px;
-    }
+    width: 220px;
+    height: 500px;
+  }
+  #section02 {
+    width: 100%;
+    height: 100%;
+    background-color: #0066FF;
+  }
+  #section02 .box.box1 p:nth-child(1) {
+    letter-spacing: 2px;
+    font-size: 50px;
+    
+  }
+  #section02 .box.box1 p:nth-child(2) {
+    letter-spacing: 2px;
+    font-size: 20px;
+  }
   @media (max-width: 1500px) {
     .section .box.box1 p:nth-child(6) {
       font-size: 150px;
@@ -93,10 +103,10 @@
     }
   }
   @media (max-width: 1050px) {
-  .section .box.box1 p:nth-child(2) {
+    #section01 .box.box1 p:nth-child(2) {
       font-size: 0;
     }
-    .section .box.box1 p:nth-child(3) {
+    #section01 .box.box1 p:nth-child(3) {
       font-size: 0;
     }
     .section .box.box1 p:nth-child(6) {
@@ -105,8 +115,12 @@
     .section .box.box1 p:nth-child(7) {
       font-size: 60px;
     }
+    #section02 .box.box1 p:nth-child(2) {
+      font-size: 12px;
+      min-width: 150px;
+    }
     #samdasoo {
-      top: 20%;
+      top: 200px;
     }
     #samdasoo img {
       width: 80px;
@@ -119,7 +133,7 @@
     }
     .section .box.box1 {
       min-width: 0;
-    } *
+    } 
   }
   //900px부터 더 줄인다.
   
@@ -136,8 +150,8 @@
       <p style="color: #0066FF;  font-weight: 1000; ">The WATER</p>
       <p style="color: #A1A1A1;  font-weight: 200; ">깨끗하고, 건강하고, 맛있는 물</p>
       <br><br>
-      <p style="padding-left: 50px">BETTER</p>
-      <p style="padding-left: 50px; position: relative; z-index: 10;">CHOICE</p>
+      <p style="color: #0066FF; padding-left: 50px;">BETTER</p>
+      <p style="color: #0066FF; padding-left: 50px; position: relative; z-index: 10;">CHOICE</p>
     </div>    
   </div>
   <div class="section" id="section02">
@@ -145,8 +159,8 @@
       <p style="color: #fff;  font-weight: 1000; ">ONLY ONE</p>
       <p style="color: #fff;  font-weight: 200; ">진정한 제주다움 실현</p>
       <br><br>
-      <p style="padding-left: 50px">BETTER</p>
-      <p style="padding-left: 50px; position: relative; z-index: 10;">CHOICE</p>
+      <p style="color: #fff;">JEJU</p>
+      <p style="color: #fff; letter-spacing: 20px; position: relative; z-index: 10;">SAMDASOO</p>
     </div>    
   </div>
 </div>

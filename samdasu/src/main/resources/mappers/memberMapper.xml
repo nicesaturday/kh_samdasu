@@ -4,18 +4,25 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 	<select id="getMembers" resultType="com.samdasu.dto.Member">
-		select id , name from member
+		select * from member
 	</select>	
 	<select id="getMember" resultType="com.samdasu.dto.Member">
-		select id , name from member where id=#{num}
+		select * from member where mnum=#{mnum}
 	</select>	
-	<insert id="insMember">
-		insert into member values (#{num}, #{id}, #{pw} , #{name} , #{email} , #{address} ,#{resdate})
+	<insert id="insMember" parameterType="com.samdasu.dto.Member">
+		insert into member values (#{mnum}, #{id}, #{pw} , #{mname} , #{email} , #{tel} , #{addr1} , #{addr2} , #{postcode} , #{birth} ,#{resdate})
 	</insert>
- 	<update id="upMember">
-		update member set name=#{name} where no=#{num}
+ 	<update id="upMember" parameterType="com.samdasu.dto.Member">
+		update member set mname=#{mname} , 
+						  email=#{email} , 
+						  tel=#{tel} ,
+						  addr1=#{addr1} ,
+						  addr2=#{addr2} ,
+						  postcode=#{postcode} ,
+						  birth=#{birth} ,
+						  resdate=#{resdate}  where mnum=#{mnum}
 	</update>
-	<delete id="delMember">
-		delete from member where num=#{num}
+	<delete id="delMember" parameterType="int">
+		delete from member where mnum=#{mnum}
 	</delete> 
 </mapper> 

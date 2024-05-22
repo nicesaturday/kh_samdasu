@@ -26,7 +26,7 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public void insMeber(Member member) {
+	public void insMember(Member member) {
 		sqlSession.insert("member.insMember" , member);
 	}
 

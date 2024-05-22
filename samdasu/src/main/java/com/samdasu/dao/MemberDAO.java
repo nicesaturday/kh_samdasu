@@ -8,7 +8,7 @@ import com.samdasu.dto.Member;
 public interface MemberDAO {
 	public List<Member> getMembers();
 	public Member getMember(int num);
-	public void insMeber(Member member);
+	public void insMember(Member member);
 	public void upMember(Member member);
 	public void delMember(int num);
 }
