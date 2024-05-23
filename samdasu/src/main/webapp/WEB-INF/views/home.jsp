@@ -65,6 +65,11 @@
     letter-spacing: 2px;
     font-size: 20px;
   }
+   #section03 {
+    width: 100%;
+    height: 100%;
+    background-color: #008100;
+  }
   @media (max-width: 1500px) {
     .section .box.box1 p:nth-child(6) {
       font-size: 150px;
@@ -119,6 +124,9 @@
       font-size: 12px;
       min-width: 150px;
     }
+    #section03 .box.box1 p:nth-child(2) {
+      font-size: 0;
+    }
     #samdasoo {
       top: 200px;
     }
@@ -161,6 +169,15 @@
       <br><br>
       <p style="color: #fff;">JEJU</p>
       <p style="color: #fff; letter-spacing: 20px; position: relative; z-index: 10;">SAMDASOO</p>
+    </div>    
+  </div>
+  <div class="section" id="section03">
+    <div class="box box1">
+      <p style="color: #fff;  font-weight: 1000; ">SUSTAINABLE</p>
+      <p style="color: #fff;  font-weight: 200; ">제주의 청정 자연과 공존하는 제주 삼다수</p>
+      <br><br><br>
+      <p style="color: #fff; letter-spacing: 20px;">ECO</p>
+      <p style="color: #fff; letter-spacing: 20px; position: relative; z-index: 10;">FRIENDLY</p>
     </div>    
   </div>
 </div>

@@ -54,9 +54,9 @@ public class BoardController {
 		return "board/up";
 	}
 	
-	@GetMapping("/upBoard")
+	@PostMapping("/upBoard")
 	public void upBoard(Model model , @ModelAttribute("board") Board board) {
-		boardService.insBoard(board);
+		boardService.upBoard(board);
 	}
 	
 	@GetMapping("/delBoard")

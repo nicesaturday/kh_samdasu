@@ -9,13 +9,20 @@
 	<select id="getMember" resultType="com.samdasu.dto.Member">
 		select * from member where mnum=#{mnum}
 	</select>	
-	<insert id="insMember">
+	<insert id="insMember" parameterType="com.samdasu.dto.Member">
 		insert into member values (#{mnum}, #{id}, #{pw} , #{mname} , #{email} , #{tel} , #{addr1} , #{addr2} , #{postcode} , #{birth} ,#{resdate})
 	</insert>
- 	<update id="upMember">
-		update member set mname=#{mname} where mnum=#{mnum}
+ 	<update id="upMember" parameterType="com.samdasu.dto.Member">
+		update member set mname=#{mname} , 
+						  email=#{email} , 
+						  tel=#{tel} ,
+						  addr1=#{addr1} ,
+						  addr2=#{addr2} ,
+						  postcode=#{postcode} ,
+						  birth=#{birth} ,
+						  resdate=#{resdate}  where mnum=#{mnum}
 	</update>
-	<delete id="delMember">
+	<delete id="delMember" parameterType="int">
 		delete from member where mnum=#{mnum}
 	</delete> 
 </mapper> 

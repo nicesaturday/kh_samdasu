@@ -9,6 +9,20 @@ body {
     height: 100vh;
     overflow-x: hidden;
 }
+
+
+
+a {
+	color: black;
+}
+
+ul , li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	color: black;
+}
+
 #content {
 	width: 100%; 
   	height: auto;
