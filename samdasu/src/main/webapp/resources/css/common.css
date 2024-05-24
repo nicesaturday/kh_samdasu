@@ -27,7 +27,6 @@ ul , li {
 	width: 100%; 
   	height: auto;
   	min-height: 100%;
-  	padding-bottom: 400px;
 }
 
 
@@ -36,5 +35,4 @@ ul , li {
 	height: 400px;
 	background-color: #0E0C0C;
 	position: relative;
-	transform : translateY(-100%);
 }

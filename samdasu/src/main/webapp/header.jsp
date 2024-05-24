@@ -29,22 +29,32 @@
   </div>
   <script>
     //물결 메뉴
-    var sammenu = document.querySelector("#header h2");
-    sammenu.addEventListenner('click', function() {
-    	var modal_menu = document.querySelector("#modal_menu");
-    	var samdasoo = document.querySelector("#samdasoo");
-    	body.style.height = "960px";
-    	body.style.overflow = "hidden";
-    	modal_menu.style.margin-right = "0";
-    	modal_menu.style.display = "block";
-    	samdasoo.style.z-index = "-1";
-	});
+    var sammenu = document.querySelector("#header h2 img");
+    sammenu.addEventListener('click', function() {
+    var modal_menu = document.querySelector("#modal_menu");
+    var samdasoo = document.querySelector("#samdasoo");
+    document.body.style.height = "960px";
+    document.body.style.overflow = "hidden";
+    modal_menu.style.marginRight = "0";
+    modal_menu.style.display = "block";
+    samdasoo.style.zIndex = "-1";
+    console.log(11);
+});
+
 	
 	//엑스 메뉴
+	//화면 사라지는 거 시간 주기
+    var mmc = document.querySelector(".modal_menu_close a");
 	
-	
-	
-	
+	mmc.addEventListener('click', function() {
+	    var modal_menu = document.querySelector("#modal_menu");
+	    var samdasoo = document.querySelector("#samdasoo");
+	    document.body.style.height = "auto";
+	    document.body.style.overflow = "auto";
+	    modal_menu.style.marginRight = "-100%";
+	    modal_menu.style.display = "none";
+	    samdasoo.style.zIndex = "5"; 
+	});
 	
 	
 	

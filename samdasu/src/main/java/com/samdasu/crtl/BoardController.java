@@ -33,8 +33,8 @@ public class BoardController {
 	
 	@GetMapping("/one")
 	public String getBoard(Model model , HttpServletRequest request) {
-		int num = Integer.parseInt(request.getParameter("num"));
-		Board board = boardService.getBoard(num);
+		int bnum = Integer.parseInt(request.getParameter("bnum"));
+		Board board = boardService.getBoard(bnum);
 		model.addAttribute("board",board);
 		return "board/one";
 	}

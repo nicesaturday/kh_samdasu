@@ -12,5 +12,6 @@ public class Board {
     private String author;
     private String btitle;
     private String bcomment;
+    private int vcnt;
     private String resdate; 
 }

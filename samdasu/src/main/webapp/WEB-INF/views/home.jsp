@@ -7,13 +7,18 @@
 <%@ include file="/head.jsp" %>
 	<title>Home</title>
 <style>
+  .section {
+    width: 100%;
+    height: 100%; 
+    min-height: 600px;
+  }
+
   #section01 {
     width: 100%;
-    height: 100%;
     background-color: #F1F1F1;
   }
   .section .box {
-    height: 650px;
+    height: auto;
     padding: 150px 190px;
     text-align: center;
   }
@@ -148,8 +153,8 @@
 </style>
 </head>
 <body>
-<div id="content">
 <%@ include file="/header.jsp" %>
+<div id="content">
   <div class="section" id="section01">
     <div class="box box1">
       <div id="samdasoo">

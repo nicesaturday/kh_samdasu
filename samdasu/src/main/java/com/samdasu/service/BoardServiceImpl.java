@@ -29,6 +29,7 @@ public class BoardServiceImpl implements BoardService {
 	@Transactional
 	@Override
 	public Board getBoard(int num) {
+		boardDAO.upBoardVcnt(num);
 		return boardDAO.getBoard(num);
 	}
 

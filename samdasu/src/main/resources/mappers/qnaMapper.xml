@@ -7,11 +7,24 @@
     <select id="getTotalQnaCount" resultType="int">
         select count(*) from Qna
     </select>
-	<select id="getQnas" resultType="com.samdasu.dto.Qna">
-		select * from Qna order by resdate desc
+    
+    <!-- has a 관계 -->
+    <resultMap type="qna" id="qnaRM">
+      <result property="member.id" column="id" />
+      <result property="member.name" column="name" />
+    </resultMap>
+    
+	<select id="getQnas" parameterType="pagingBean" resultMap="qnaRM">
+		select q.num , q.qtitle , q.content , q.q_level , q.parno , q.hits , q.resdate , m.id , m.name
+		from qna q , member m
+		where q.id=m.id order by q.resdate desc
+		limit #{startRowNumber}, #{contentNumberPerPage} 
 	</select>	
-	<select id="getQna" parameterType="com.samdasu.dto.Qna" resultType="com.samdasu.dto.Qna">
-		select * from Qna where qnum=#{qnum}
+	<select id="getQna" parameterType="qnaRM">
+		select q.num , q.qtitle , q.content , q.q_level , q.parno , q.hits , q.resdate , m.id , m.name
+		from qna q
+		join member m on q.id = m.id
+		where qnum= #{qnum}
 	</select>	
 	<insert id="insQna" parameterType="com.samdasu.dto.Qna">
 		<selectKey keyProperty="qn" resultType="int" order="BEFORE">
@@ -21,19 +34,25 @@
 								#{id} , 
 								#{qtitle} , 
 								#{qcomment} , 
-								#{q_level} ,
+								default ,
 								#{parno} ,
-								#{hits} ,
-								#{resdate})
+								default ,
+								default)
 	</insert>
+	<!-- 답변 parno 설정  -->
+	<update id="upParno">
+	    update qna set parno=#{parno} where qnum=#{qnum}
+	</update>
+	
+	
  	<update id="upQna" parameterType="com.samdasu.dto.Qna">
 		update Qna set qtitle=#{qtitle} , 
 					   qcomment=#{qcomment} ,
 					    where qnum=#{qnum}
 	</update>
-<!-- 	<update id="upQnaHits" parameterType="int">
-	    update Qna set hits=hits+1 where bnum=#{bnum}
-	</update> -->
+	<update id="upQnaHits" parameterType="int">
+	    update Qna set hits=hits+1 where qnum=#{qnum}
+	</update> 
 	<delete id="delQna" parameterType="int">
 		delete from Qna where qnum=#{qnum}
 	</delete> 

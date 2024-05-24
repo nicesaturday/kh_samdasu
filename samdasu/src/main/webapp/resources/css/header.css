@@ -8,11 +8,22 @@
 	justify-content: space-between;
 }
 
+#header h1 {
+	position: relative;
+	top: 10px;
+	left: 20px;
+}
+
 #header h1 img {
 	width: 200px;
 	height: 40px;
 }
 
+#header h2 {
+	position: relative;
+	top: 10px;
+	right: 20px;
+}
 #header h2 img {
 	width: 30px;
 	height: 30px;
@@ -28,7 +39,7 @@
 }
 
 #modal_menu {
-	
+	transition: all 3s;
 }
 
 
