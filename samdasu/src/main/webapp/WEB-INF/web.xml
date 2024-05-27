@@ -43,7 +43,7 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <!-- PUT, PATCH, DELETE 방식의 메소드를 지원하지 않는 브라우저가 있을 경우 Spring에서 PUT, PATCH, DELETE 를 지원하는 필터 -->
-   	<filter>
+  <!--  	<filter>
 		<filter-name>httpMethodFilter</filter-name>
 		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
 	</filter>
@@ -51,13 +51,13 @@
 		<filter-name>httpMethodFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-    <!-- 해당 내용 접근시 로그인이 필요하도록 필터 기능 탑재 -->
+    해당 내용 접근시 로그인이 필요하도록 필터 기능 탑재
 	<filter>
 		<filter-name>loginCheckFilter</filter-name>
-		<filter-class>com.morning.filter.LoginCheckFilter</filter-class>
+		<filter-class>com.samdasu.filter.LoginCheckFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>loginCheckFilter</filter-name>
 		<url-pattern>/sales/*</url-pattern>
-	</filter-mapping>  
+	</filter-mapping>   -->
 </web-app>
