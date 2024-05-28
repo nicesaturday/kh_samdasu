@@ -22,11 +22,11 @@
 								#{btitle} , 
 								#{bcomment} , 
 								default,
-								#{resdate})
+								default)
 	</insert>
  	<update id="upBoard" parameterType="com.samdasu.dto.Board">
 		update board set btitle=#{btitle} , 
-					   bcomment=#{bcomment} , where bnum=#{bnum}
+					   bcomment=#{bcomment} where bnum=#{bnum}
 	</update>
 	<update id="upBoardVcnt" parameterType="int">
 	    update board set vcnt=vcnt+1 where bnum=#{bnum}

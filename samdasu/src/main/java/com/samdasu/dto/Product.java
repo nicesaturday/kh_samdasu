@@ -1,5 +1,7 @@
 package com.samdasu.dto;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,5 +15,5 @@ public class Product {
 	private String pname;
 	private String pcomment;
 	private int pprice;
-	private String img;
+	private List<UploadData> images;
 }

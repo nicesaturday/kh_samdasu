@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="free">
+
+    <select id="getTotalFreeCount" resultType="int">
+        select count(*) from free
+    </select>
+	<select id="getFrees" resultType="com.samdasu.dto.Free">
+		select * from free order by resdate desc
+	</select>	
+	<select id="getFree" parameterType="com.samdasu.dto.Free" resultType="com.samdasu.dto.Free">
+		select * from free where fnum=#{fnum}
+	</select>	
+	<insert id="insFree" parameterType="com.samdasu.dto.Free">
+		<selectKey keyProperty="fn" resultType="int" order="BEFORE">
+		  select fseq.NEXTVAL from DUAL
+		</selectKey>
+		insert into free values (#{fn} , 
+								default , 
+								#{title} , 
+								#{content} , 
+								default ,
+						 		#{id} ,
+						 		#{name}
+								default)
+	</insert>
+ 	<update id="upFree" parameterType="com.samdasu.dto.Free">
+		update free set title=#{title} , 
+					    content=#{content} where fnum=#{fnum}
+	</update>
+	<update id="upFreeHits" parameterType="int">
+	    update free set hits=hits+1 where fnum=#{fnum}
+	</update>
+	<delete id="delFree" parameterType="int">
+		delete from free where fnum=#{fnum}
+	</delete> 
+</mapper> 

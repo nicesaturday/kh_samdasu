@@ -4,7 +4,7 @@
 <html>
 <head>
 <%@ include file="/head.jsp" %>
-	<title>Board One</title>
+	<title>Free One</title>
 	<link rel="stylesheet" href="${hpath }/resources/css/bulma.min.css?after3"/>
 	<style>
 	  #header {
@@ -26,13 +26,13 @@
  <nav class="breadcrumb" aria-label="breadcrumbs">
   <ul>
     <li><a href="${hpath }">Main</a></li>
-    <li><a href="${hpath }/board/list">BoardList</a></li>
+    <li><a href="${hpath }/free/list">FreeList</a></li>
     <li><a href="#">One</a></li>
   </ul>
  </nav>
   <div class="card">
   <header class="card-header">
-    <p class="card-header-title">${board.btitle }</p>
+    <p class="card-header-title">${free.title }</p>
     <button class="card-header-icon" aria-label="more options">
       <span class="icon">
         <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -41,14 +41,14 @@
   </header>
   <div class="card-content">
     <div class="content">
-      ${board.bcomment }
+      ${free.content }
       <br />
-      <time datetime="2016-1-1">${board.resdate }</time>
+      <time datetime="2016-1-1">${free.resdate }</time>
     </div>
   </div>
   <footer class="card-footer">
-    <a href="${hpath }/board/list" class="card-footer-item">Back</a>
-    <a href="${hpath }/board/upBoard?num=${board.bnum}" class="card-footer-item">Edit</a>
+    <a href="#" class="card-footer-item">Save</a>
+    <a href="${hpath }/free/edit" class="card-footer-item">Edit</a>
     <a href="#" class="card-footer-item">Delete</a>
   </footer>
 </div>

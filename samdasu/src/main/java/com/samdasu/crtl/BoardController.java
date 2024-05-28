@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -33,8 +34,8 @@ public class BoardController {
 	
 	@GetMapping("/one")
 	public String getBoard(Model model , HttpServletRequest request) {
-		int bnum = Integer.parseInt(request.getParameter("bnum"));
-		Board board = boardService.getBoard(bnum);
+		int num = Integer.parseInt(request.getParameter("num"));
+		Board board = boardService.getBoard(num);
 		model.addAttribute("board",board);
 		return "board/one";
 	}
@@ -50,13 +51,17 @@ public class BoardController {
 	}
 	
 	@GetMapping("/upBoard")
-	public String upBoard() {
+	public String upBoard(Model model , HttpServletRequest request) {
+		int num = Integer.parseInt(request.getParameter("num"));
+		Board board = boardService.getBoard(num);
+		model.addAttribute("board",board);
 		return "board/up";
 	}
 	
 	@PostMapping("/upBoard")
-	public void upBoard(Model model , @ModelAttribute("board") Board board) {
-		boardService.upBoard(board);
+	public String upBoard(Model model , @ModelAttribute("board") Board board) {
+		boardService.upBoard(board); 
+		return "redirect:/board/list";
 	}
 	
 	@GetMapping("/delBoard")

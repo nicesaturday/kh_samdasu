@@ -10,7 +10,10 @@
 		select * from member where mnum=#{mnum}
 	</select>	
 	<insert id="insMember" parameterType="com.samdasu.dto.Member">
-		insert into member values (#{mnum}, #{id}, #{pw} , #{mname} , #{email} , #{tel} , #{addr1} , #{addr2} , #{postcode} , #{birth} ,#{resdate})
+		<selectKey keyProperty="mn" resultType="int" order="BEFORE">
+		  select mseq.NEXTVAL from DUAL
+		</selectKey>
+		insert into member values (#{mn}, #{id}, #{pw} , #{mname} , #{email} , #{tel} , #{addr1} , #{addr2} , #{postcode} , #{birth} ,default)
 	</insert>
  	<update id="upMember" parameterType="com.samdasu.dto.Member">
 		update member set mname=#{mname} , 

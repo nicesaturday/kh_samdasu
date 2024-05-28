@@ -17,7 +17,8 @@ create table member(mnum int primary key ,
                   birth date not null , 
                   resdate DATE default sysdate
 );
-insert into member values(mseq.NEXTVAL , 'admin' , '1234' , '관리자' , 'admin@123123', '광화문' , default
+select * from member;
+insert into member values(mseq.NEXTVAL , 'admin' , '1234' , '관리자' , 'admin@123123', '010-5555-8888'  ,'광화문' , '7층' ,  '232-32' , '2000-04-05' ,default
 );
 
 drop table product;
@@ -70,10 +71,14 @@ create table board(bnum int primary key,
                    bcomment varchar(2000) not null ,
                    vcnt int default 0,
                    resdate DATE default sysdate
-); 
+);
+insert into board values(bseq.NEXTVAL ,default , '타이틀1' , '코멘트1' , default , default);
+
+
 
 drop table qna;
 desc qna;
+create SEQUENCE qseq INCREMENT BY 1 START WITH 1 MINVALUE 1 MAXVALUE 9999 NOCYCLE;
 create table qna(qnum int primary key ,
                  id varchar(20) ,
                  qtitle varchar(300) not null ,
@@ -97,7 +102,8 @@ create table fileboard(fbnum int primary key ,
 
 desc free;
 drop table free;
-create table free(fno int primary key ,
+create SEQUENCE fseq INCREMENT BY 1 START WITH 1 MINVALUE 1 MAXVALUE 9999 NOCYCLE;
+create table free(fnum int primary key ,
                   title varchar(400) not null ,
                   content varchar(1000) not null ,
                   hits int default 0, 
@@ -105,7 +111,31 @@ create table free(fno int primary key ,
                   name varchar(100) ,
                   resdate DATE default sysdate 
 );
+insert into free values(fseq.NEXTVAL , '프리타이틀1' , '프리코멘트1' , default , 'admin' , '관리자' ,default);
 
+select f.fno , f.title , f.content , f.hits , f.name , f.resdate , m.id , m.mname from free f join member m on f.id=m.id;
+
+
+
+desc product;
+create table product(pno int primary key,
+                     cate varchar(20) not null, 
+                     pname varchar(100) not null, 
+                     com varchar(1000), 
+                     price int default 1000, 
+                     img varchar(300)
+);
+
+
+create table basket(bkno int primary key,
+                    id varchar(20) ,
+                    pno int , 
+                    amount int ,
+                    remark varchar(100), 
+                    resdate DATE default sysdate ,
+                    FOREIGN KEY (id) REFERENCES member(id) ,
+                    FOREIGN KEY (pno) REFERENCES product(pno)
+);
 
 
 

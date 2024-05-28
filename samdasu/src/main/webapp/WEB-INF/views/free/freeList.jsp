@@ -4,7 +4,7 @@
 <html>
 <head>
 <%@ include file="/head.jsp" %>
-	<title>Board List</title>
+	<title>Free List</title>
 	<link rel="stylesheet" href="${hpath }/resources/css/bulma.min.css?after3"/>
 	<style>
 	  #header {
@@ -21,12 +21,6 @@
 	    display: flex;
 	    justify-content: center;
 	  }
-	  #buttons {
-	    width: 100%;
-	    display: flex;
-	    justify-content: center;
-	    margin: 20px;
-	  }
 	  
 	</style>
 </head>
@@ -37,7 +31,7 @@
  <nav class="breadcrumb" aria-label="breadcrumbs">
   <ul>
     <li><a href="${hpath }">Main</a></li>
-    <li><a href="${hpath }/board/list">BoardList</a></li>
+    <li><a href="${hpath }/free/list">FreeList</a></li>
   </ul>
  </nav>
 </div>
@@ -46,7 +40,6 @@
   <thead>
     <tr>
       <th><abbr title="Position">번호</abbr></th>
-      <th>Team</th>
       <th><abbr title="Played">제목</abbr></th>
       <th><abbr title="Won">내용</abbr></th>
       <th><abbr title="Drawn">날짜</abbr></th>
@@ -54,26 +47,22 @@
     </tr>
   </thead>
   <tbody>
-   <c:forEach var="item" items="${boardList }" varStatus="status">
+   <c:forEach var="item" items="${freeList }" varStatus="status">
     <tr>
       <th>${status.count }</th>
       <td>
-        <a href="${hpath }/board/one?num=${item.bnum }">
-         <strong>${item.btitle }</strong>
+        <a href="${hpath }/free/one?num=${item.fnum }">
+         <strong>${item.title }</strong>
         </a>
       </td>
-      <td>${item.btitle }</td>
-      <td>${item.author }</td>
+      <td>${item.content }</td>
       <td>${item.resdate }</td>
-      <td>${item.vcnt }</td>
+      <td>${item.hits }</td>
     </tr>
     </c:forEach>
 </tbody>
 </table>
 </div>
-<div class="buttons" id="buttons">
-  		<button class="button is-primary"><a href="${hpath }/board/insBoard">글등록</a></button>
-	</div>
 </div>
 
 <%@ include file="/footer.jsp" %>

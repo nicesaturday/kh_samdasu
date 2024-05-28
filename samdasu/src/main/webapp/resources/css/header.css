@@ -39,6 +39,7 @@
 }
 
 #modal_menu {
+	z-index: 999;
 	transition: all 3s;
 }
 
