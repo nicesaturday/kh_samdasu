@@ -11,29 +11,29 @@
 	<select id="getProducts" resultType="com.samdasu.dto.Product">
 		select * from Product
 	</select>	
-	<select id="getProduct" resultType="com.samdasu.dto.Product">
+	<select id="getProduct" parameterType="int" resultType="com.samdasu.dto.Product">
 		select * from Product where pnum=#{pnum}
 	</select>	
 	<insert id="insProduct" parameterType="com.samdasu.dto.Product">
-		insert into Product values (#{pnum}, 
-									#{id}, 
-									#{pw} , 
-									#{mname} , 
-									#{email} , 
-									#{tel} , 
-									#{addr1} , 
-									#{addr2} , 
-									#{postcode} ,
-									#{birth} ,
-									#{resdate})
+	 <selectKey keyProperty="pn" resultType="int" order="BEFORE">
+		  select pseq.NEXTVAL from DUAL
+	 </selectKey>
+		insert into Product values (#{pn}, 
+									#{cate}, 
+									#{pname} , 
+									#{pcomment} , 
+									#{pprice} ,
+									#{img} ,
+									#{img2} ,
+									#{img3}
+									)
 	</insert>
  	<update id="upProduct" parameterType="com.samdasu.dto.Product">
-		update Product set pnum=#{pnum} , 
-						  cate=#{cate} , 
+		update Product set cate=#{cate} , 
 						  pname=#{pname} ,
 						  pcomment=#{pcomment} ,
 						  pprice=#{pprice} ,
-						  img=#{img}
+						  img=#{img} , img2=#{img2} , img3=#{img3} where pnum=#{pnum}
 	</update>
 	<delete id="delProduct" parameterType="int">
 		delete from Product where pnum=#{pnum}

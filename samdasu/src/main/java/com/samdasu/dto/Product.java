@@ -2,6 +2,8 @@ package com.samdasu.dto;
 
 import java.util.List;
 
+import com.samdasu.vo.UploadData;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,10 +12,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
-	private int pnum;
+	private int pn;
 	private String cate;
 	private String pname;
 	private String pcomment;
 	private int pprice;
-	private List<UploadData> images;
+	private String img;
+	private String img2;
+	private String img3;
 }

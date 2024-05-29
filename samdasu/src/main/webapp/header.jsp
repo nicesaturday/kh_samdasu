@@ -22,7 +22,7 @@
      <li><a href="${hpath}/qna/list">Qna</a></li>
      <li><a href="${hpath}/board/list">Board</a></li>
      <li><a href="${hpath}/free/list">Free Board</a></li>
-     <li><a href="${hpath}/fileupload/upload"></a></li>
+     <li><a href="${hpath}/product/list">Product</a></li>
     </ul>
       <p class="modal_menu_close">
         <a href="#" class="active"></a>
