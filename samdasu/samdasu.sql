@@ -23,13 +23,21 @@ insert into member values(mseq.NEXTVAL , 'admin' , '1234' , '관리자' , 'admin
 
 drop table product;
 desc product;
+create SEQUENCE pseq INCREMENT BY 1 START WITH 1 MINVALUE 1 MAXVALUE 9999 NOCYCLE;
+drop SEQUENCE pseq;
 create table product(pnum int primary key ,
                      cate varchar(50) not null ,
                      pname varchar(100) not null ,
                      pcomment varchar(1000) , 
                      pprice int not null ,
-                     img varchar(500)
-);      
+                     img varchar(500) ,
+                     img2 varchar(500) ,
+                     img3 varchar(500)
+);
+delete from product where pnum = 1;
+select * from product;
+alter table product add img2 varchar(500);
+alter table product add img3 varchar(500);
 
 drop table inventory;
 desc inventory;
@@ -116,25 +124,15 @@ insert into free values(fseq.NEXTVAL , '프리타이틀1' , '프리코멘트1' ,
 select f.fno , f.title , f.content , f.hits , f.name , f.resdate , m.id , m.mname from free f join member m on f.id=m.id;
 
 
-
-desc product;
-create table product(pno int primary key,
-                     cate varchar(20) not null, 
-                     pname varchar(100) not null, 
-                     com varchar(1000), 
-                     price int default 1000, 
-                     img varchar(300)
-);
-
-
+drop table basket;
 create table basket(bkno int primary key,
                     id varchar(20) ,
-                    pno int , 
+                    pnum int , 
                     amount int ,
                     remark varchar(100), 
                     resdate DATE default sysdate ,
                     FOREIGN KEY (id) REFERENCES member(id) ,
-                    FOREIGN KEY (pno) REFERENCES product(pno)
+                    FOREIGN KEY (pnum) REFERENCES product(pnum)
 );
 
 
