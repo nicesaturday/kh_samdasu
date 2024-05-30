@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class Inventory {
 	private int inum;
 	private int pnum;
+	private String pname; //join data
 	private int iprice;
 	private int oprice;
 	private int amount;

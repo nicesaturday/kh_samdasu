@@ -31,6 +31,8 @@
 <!-- 	<resources mapping="/users2/**" location="/WEB-INF/views/users" /> -->
 	<resources mapping="/free/**" location="/WEB-INF/views/free" />
 	<resources mapping="/api/**" location="/WEB-INF/views/api" />
+    <resources mapping="/admin/**" location="/WEB-INF/views/admin" />
+
 
 	<!-- 리졸버에 대한 접두사와 접미사 설정 -->
 	<!-- @Controller가 렌더링하기 위해 선택한 뷰를 /WEB-INF/views 디렉터리의 .jsp 리소스로 확인합니다. -->
@@ -49,13 +51,16 @@
 	
 	<!-- 멀티파트 업로드 디렉토리 지정 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="D:\kim\springframework\spring1\src\main\webapp\resources\upload"></beans:constructor-arg>
+		<beans:constructor-arg value="D:\minsik\20240521spring3\samdasu\src\main\webapp\resources\upload"></beans:constructor-arg>
 	</beans:bean>
 	
-	<!-- 멀티파트 업로드 디렉토리 지정 -->
-	<!-- <beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="D:\kim\pro03\pro03\src\main\webapp\resources\upload"></beans:constructor-arg>
-	</beans:bean> -->
+		<beans:bean id="adminIntercepter" class="com.samdasu.filter.AdminInterceptor" />
+    <interceptors>
+        <interceptor>
+            <mapping path="/admin/**"/>
+            <beans:ref bean="adminIntercepter" />
+        </interceptor>
+    </interceptors>
 	
 		
 	<!-- 기본 메인 패키지 및 컨트롤러 패키지 설정 -->

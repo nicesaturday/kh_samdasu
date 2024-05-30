@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sales">
+
+    <select id="getTotalCount" resultType="int">
+        select count(*) from sales
+    </select>
+    
+    <!-- has a 관계 -->
+    <resultMap type="sales" id="salesRM">
+      <result property="member.id" column="id" />
+      <result property="member.name" column="name" />
+    </resultMap>
+    
+	<select id="getSaless" parameterType="pagingBean" resultMap="salesRM">
+		select q.num , q.qtitle , q.content , q.q_level , q.parno , q.hits , q.resdate , m.id , m.name
+		from sales q , member m
+		where q.id=m.id order by q.resdate desc
+		limit #{startRowNumber}, #{contentNumberPerPage} 
+	</select>	
+	<select id="getAllSaless" parameterType="salesRM" resultType="com.samdasu.dto.Sales">
+		select * from sales order by resdate desc
+	</select>
+	<!-- 관리자 판매 진행 상태별 목록 -->
+	<select id="getStSaless" parameterType="salesRM" resultType="com.samdasu.dto.Sales">
+		select * from sales where st=#{st} order by resdate desc
+	</select>
+	<!-- 관리자 배송 상태별 목록 -->
+	<select id="getDelSaless" parameterType="salesRM" resultType="com.samdasu.dto.Sales">
+		select * from sales where delstatus=#{delstatus} order by resdate desc
+	</select>
+	
+		<!-- 상품별 판매 목록 -->
+	<select id="getPnoSalesList" resultType="com.morning.domain.Sales">
+		select * from sales	where pnum=#{pnum} order by resdate desc
+	</select>
+	
+		<!-- 고객별 구매 목록 -->
+	<select id="getSalesList" resultType="com.morning.domain.Sales">
+		select * from sales where id=#{id} 
+	</select>
+			
+	<insert id="insSales" parameterType="com.samdasu.dto.Sales">
+		<selectKey keyProperty="qn" resultType="int" order="BEFORE">
+		  select qseq.NEXTVAL from DUAL
+		</selectKey>
+		insert into sales values (#{qn} , 
+								#{id} , 
+								#{qtitle} , 
+								#{qcomment} , 
+								default ,
+								#{parno} ,
+								default ,
+								default)
+	</insert>
+
+	
+	
+ 	<update id="upSales" parameterType="com.samdasu.dto.Sales">
+		update sales set qtitle=#{qtitle} , 
+					   qcomment=#{qcomment} ,
+					    where qnum=#{qnum}
+	</update>
+	<update id="upSalesHits" parameterType="int">
+	    update sales set hits=hits+1 where snum=#{snum}
+	</update> 
+	<delete id="delSales" parameterType="int">
+		delete from sales where snum=#{snum}
+	</delete> 
+</mapper> 
+
+

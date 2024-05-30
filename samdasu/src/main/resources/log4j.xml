@@ -33,7 +33,19 @@
 		<level value="info" />
 	</logger>
 	
+	<logger name="com.samdasu.filter">
+		<level value="info" />
+	</logger>
+	
 	<logger name="com.samdasu.service">
+		<level value="info" />
+	</logger>
+	
+	<logger name="com.samdasu.aop">
+		<level value="trace" />
+	</logger>
+	
+	<logger name="com.samdasu.test">
 		<level value="info" />
 	</logger>
 	
@@ -56,7 +68,7 @@
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
+		<priority value="trace" />
 		<appender-ref ref="console" />
 	</root>
 	
