@@ -11,20 +11,31 @@
     <!-- has a 관계 -->
     <resultMap type="qna" id="qnaRM">
       <result property="member.id" column="id" />
-      <result property="member.name" column="name" />
+      <result property="member.mname" column="mname" />
     </resultMap>
     
 	<select id="getQnas" parameterType="pagingBean" resultMap="qnaRM">
-		select q.num , q.qtitle , q.content , q.q_level , q.parno , q.hits , q.resdate , m.id , m.name
-		from qna q , member m
-		where q.id=m.id order by q.resdate desc
-		limit #{startRowNumber}, #{contentNumberPerPage} 
+		SELECT *
+    FROM (
+    SELECT q.qnum,
+           q.qtitle,
+           q.content,
+           q.q_level,
+           q.parno,
+           q.hits,
+           q.resdate,
+           m.id,
+           m.mname,
+           ROW_NUMBER() OVER (ORDER BY q.resdate DESC) AS rnum
+    FROM qna q
+    JOIN member m ON q.id = m.id
+) 
+WHERE rnum BETWEEN #{startRowNumber} AND #{endRowNumber}
 	</select>	
-	<select id="getQna" parameterType="qnaRM" resultType="com.samdasu.dto.Qna">
-		select q.num , q.qtitle , q.content , q.q_level , q.parno , q.hits , q.resdate , m.id , m.name
-		from qna q
-		join member m on q.id = m.id
-		where qnum= #{qnum}
+	<select id="getQna" resultMap="qnaRM">
+		select q.num, q.title, q.content, q.lev, q.parno, q.hits, q.resdate, m.id, m.mname 
+		from qna q, member m 
+		where q.id=m.id and num=#{num}
 	</select>	
 	<insert id="insQna" parameterType="com.samdasu.dto.Qna">
 		<selectKey keyProperty="qn" resultType="int" order="BEFORE">
