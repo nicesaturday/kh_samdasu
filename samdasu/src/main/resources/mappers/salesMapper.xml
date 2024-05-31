@@ -38,9 +38,12 @@
 	
 	<!-- 구매 처리 -->
 	<insert id="insSales" parameterType="com.samdasu.dto.Sales">
-		insert into sales values (default, #{pno}, #{amount}, #{tot},
+	<selectKey keyProperty="sn" resultType="int" order="BEFORE">
+		  select sseq.NEXTVAL from DUAL
+	 </selectKey>
+		insert into sales values (#{sn}, #{pnum}, #{amount}, #{tot},
 		#{id}, #{paymethod}, #{paynum}, #{addr}, #{tel}, 
-		#{delcom}, #{deltel}, #{delno}, #{delstatus}, #{st}, default, #{gtid}, #{rname})
+		#{delcom}, #{deltel}, #{delnum}, #{rname} , #{gtid} , #{delstatus}, #{st}, default)
 	</insert>
 	
 	<!-- 배송지 변경 -->
